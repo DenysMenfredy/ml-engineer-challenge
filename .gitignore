@@ -11,3 +11,7 @@ wheels/
 
 
 credentials/*.json
+
+data/docs-sm/
+
+logs/*.log
