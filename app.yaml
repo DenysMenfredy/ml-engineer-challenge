@@ -14,3 +14,6 @@ automatic_scaling:
 
 resources:
   disk_size_gb: 30
+
+readiness_check:
+  app_start_timeout_sec: 600
