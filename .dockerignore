@@ -1,1 +1,14 @@
-data/ 
+data/
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+logs/
+files/
+.env
+venv/
+.venv
+.venv/
+.git
+.gitignore
+.DS_Store

@@ -3,14 +3,14 @@ version: '3.8'
 services:
   app:
     build:
-      context: ..
-      dockerfile: deployment/Dockerfile
+      context: .
+      dockerfile: Dockerfile
     container_name: health-care-doc-system
     ports:
       - "8000:8000"
     volumes:
-      - ../logs:/app/logs
-      - ../credentials/google_app_credentials.json:/app/credentials/google_app_credentials.json:ro
+      - ./logs:/app/logs
+      - ./credentials/google_app_credentials.json:/app/credentials/google_app_credentials.json:ro
     environment:
       - GOOGLE_APPLICATION_CREDENTIALS=/app/credentials/google_app_credentials.json
     restart: unless-stopped 

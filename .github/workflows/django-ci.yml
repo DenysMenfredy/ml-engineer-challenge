@@ -16,7 +16,6 @@ jobs:
       - name: Debug Directory Contents
         run: |
           ls -la
-          ls -la deployment/
       - name: Authenticate to Google Cloud
         uses: google-github-actions/auth@v1
         with:
@@ -24,11 +23,11 @@ jobs:
       - name: Set up Cloud SDK
         uses: google-github-actions/setup-gcloud@v1
       - name: Configure Docker for Artifact Registry
-        run: gcloud auth configure-docker us-central1-docker.pkg.dev
+        run: gcloud auth configure-docker us-east1-docker.pkg.dev
       - name: Build and Push Docker Image
         run: |
-          docker build -t us-central1-docker.pkg.dev/${{ secrets.GCP_PROJECT_ID }}/document-processing-system/app:latest --file deployment/Dockerfile .
-          docker push us-central1-docker.pkg.dev/${{ secrets.GCP_PROJECT_ID }}/document-processing-system/app:latest
+          docker build -t us-east1-docker.pkg.dev/${{ secrets.GCP_PROJECT_ID }}/document-processing-system/app:latest --file Dockerfile .
+          docker push us-east1-docker.pkg.dev/${{ secrets.GCP_PROJECT_ID }}/document-processing-system/app:latest
       - name: Deploy to App Engine
         run: |
-          gcloud app deploy app.yaml --image-url=us-central1-docker.pkg.dev/${{ secrets.GCP_PROJECT_ID }}/document-processing-system/app:latest --quiet
+          gcloud app deploy app.yaml --image-url=us-east1-docker.pkg.dev/${{ secrets.GCP_PROJECT_ID }}/document-processing-system/app:latest --quiet

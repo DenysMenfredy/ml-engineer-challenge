@@ -15,4 +15,5 @@ dependencies = [
     "google-cloud-vision>=3.4.0",
     "chromadb>=0.4.0",
     "sentence-transformers>=2.2.0",
+    "pdf2image>=1.17.0",
 ]

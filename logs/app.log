@@ -7,3 +7,9 @@
 2025-07-21 05:44:50,006 [INFO] healthcare_app: Request: <rest_framework.request.Request: POST '/api/documents/process/'>
 2025-07-21 05:44:50,008 [INFO] healthcare_app: File: invoice_test.jpg
 2025-07-21 05:44:50,011 [ERROR] healthcare_app: Error processing document: [Errno 21] Is a directory: '/app/credentials/google_credentials.json'
+2025-07-21 06:51:09,796 [INFO] healthcare_app: Request: <rest_framework.request.Request: POST '/api/documents/process/'>
+2025-07-21 06:51:09,798 [INFO] healthcare_app: File: invoice_test.jpg
+2025-07-21 06:51:42,716 [INFO] healthcare_app: Request: <rest_framework.request.Request: POST '/api/documents/process/'>
+2025-07-21 06:51:42,717 [INFO] healthcare_app: File: invoice_test.jpg
+2025-07-21 06:51:49,406 [INFO] healthcare_app: Request: <rest_framework.request.Request: POST '/api/documents/process/'>
+2025-07-21 06:51:49,409 [INFO] healthcare_app: File: invoice_test.jpg
