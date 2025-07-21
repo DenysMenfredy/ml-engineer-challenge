@@ -18,10 +18,12 @@ from django.contrib import admin
 from django.urls import include, path
 from django.conf import settings
 from django.conf.urls.static import static
+from apps.documents.views import HealthCheckView
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('api/', include('apps.documents.urls')),
     path('api-auth/', include('rest_framework.urls')),
-    path('api/documents/', include('apps.documents.urls', namespace='documents'))
+    path('api/documents/', include('apps.documents.urls', namespace='documents')),
+    path('health/', HealthCheckView.as_view(), name='health_check'),
 ]
