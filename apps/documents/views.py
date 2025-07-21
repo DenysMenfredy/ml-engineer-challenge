@@ -69,11 +69,5 @@ class DocumentProcessingView(APIView):
 
         finally:
             if file_path:
-                default_storage.delete(file_path)
-            
-            
-class HealthCheckView(APIView):
-    """Health check endpoint for App Engine."""
-    def get(self, request):
-        return Response({"status": "healthy"}, status=status.HTTP_200_OK)               
+                default_storage.delete(file_path)               
 

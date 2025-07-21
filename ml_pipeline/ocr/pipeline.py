@@ -5,16 +5,14 @@ from PIL import Image
 import numpy as np
 from ml_pipeline.ocr.base import BaseOCRProcessor, OCRResult
 from ml_pipeline.ocr.tesseract import TesseractOCRProcessor
-from ml_pipeline.ocr.preprocessor import OCRPreprocessor
 from pdf2image import convert_from_path
 import os
 
 class OCRPipeline:
     """OCR Pipeline class."""
 
-    def __init__(self, processor: BaseOCRProcessor, preprocessor: Optional[OCRPreprocessor] = None):
+    def __init__(self, processor: BaseOCRProcessor):
         self.processor = processor
-        self.preprocessor = preprocessor
 
     def _is_pdf(self, file_path: str) -> bool:
         return file_path.lower().endswith('.pdf')
@@ -49,15 +47,6 @@ class OCRPipeline:
             image = Image.open(image)
         elif isinstance(image, bytes):
             image = Image.open(io.BytesIO(image))
-
-        
-        if self.preprocessor:
-            # convert PIL.Image to np.ndarray
-            image_array = np.array(image)
-            processed_image, processing_info = self.preprocessor.preprocess_pipeline(image_array)
-            # Convert back to PIL Image
-            if processed_image is not None:
-                image = Image.fromarray(processed_image)
 
         
         result = self.processor.extract_text(image)

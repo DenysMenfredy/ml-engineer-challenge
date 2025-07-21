@@ -1,5 +1,6 @@
 from django.urls import path
-from .views import DocumentProcessingView, HealthCheckView
+from .views import DocumentProcessingView
+from .health import HealthCheckView
 
 app_name = 'documents'
 

@@ -4,7 +4,9 @@ FROM python:3.10-slim
 # Set environment variables early for better layer caching
 ENV PYTHONDONTWRITEBYTECODE=1 \
     PYTHONUNBUFFERED=1 \
-    GOOGLE_APPLICATION_CREDENTIALS=/app/credentials/google_app_credentials.json
+    GOOGLE_APPLICATION_CREDENTIALS=/app/credentials/google_app_credentials.json \
+    TRANSFORMERS_NO_CUDA=1 \
+    CUDA_VISIBLE_DEVICES=""
 
 # Set work directory
 WORKDIR /app
@@ -12,23 +14,15 @@ WORKDIR /app
 # Install system dependencies in one layer, clean up properly
 RUN apt-get update && \
     apt-get install -y --no-install-recommends \
-        build-essential \
-        libglib2.0-0 \
-        libsm6 \
-        libxext6 \
-        libxrender-dev \
-        libgl1 \
-        tesseract-ocr \
         poppler-utils && \
     apt-get clean && \
     rm -rf /var/lib/apt/lists/*
 
 # Install Python dependencies separately for better caching
-COPY pyproject.toml uv.lock ./
+COPY pyproject.toml ./
 RUN pip install --upgrade pip && \
-    pip install uv && \
-    uv sync --all-groups && \
-    uv add gunicorn
+    pip install . && \
+    pip install gunicorn
 
 # Copy only the necessary project files (use .dockerignore to exclude unnecessary files)
 COPY . .

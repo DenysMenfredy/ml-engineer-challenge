@@ -1,0 +1,16 @@
+steps:
+  - name: 'gcr.io/cloud-builders/docker'
+    args: [ 'build', '-t', 'us-east1-docker.pkg.dev/$PROJECT_ID/document-processing-system/app:latest', '.' ]
+  - name: 'gcr.io/cloud-builders/docker'
+    args: [ 'push', 'us-east1-docker.pkg.dev/$PROJECT_ID/document-processing-system/app:latest' ]
+  - name: 'gcr.io/google.com/cloudsdktool/cloud-sdk'
+    entrypoint: gcloud
+    args:
+      - app
+      - deploy
+      - app.yaml
+      - '--image-url=us-east1-docker.pkg.dev/$PROJECT_ID/document-processing-system/app:latest'
+      - '--quiet'
+images:
+  - 'us-east1-docker.pkg.dev/$PROJECT_ID/document-processing-system/app:latest'
+timeout: '1800s'

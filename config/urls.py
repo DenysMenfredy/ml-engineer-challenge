@@ -18,7 +18,7 @@ from django.contrib import admin
 from django.urls import include, path
 from django.conf import settings
 from django.conf.urls.static import static
-from apps.documents.views import HealthCheckView
+from apps.documents.health import HealthCheckView
 
 urlpatterns = [
     path('admin/', admin.site.urls),
