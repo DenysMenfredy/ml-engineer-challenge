@@ -28,7 +28,7 @@ RUN pip install --upgrade pip && \
 COPY . .
 
 # Expose port (if running Django server)
-EXPOSE 8000
+EXPOSE 8080
 
 # Use exec form for CMD, and use uvicorn/gunicorn for production if possible
-CMD ["gunicorn", "config.wsgi:application", "--bind", "0.0.0.0:8000"]
+CMD ["gunicorn", "config.wsgi:application", "--bind", "0.0.0.0:8080"]
