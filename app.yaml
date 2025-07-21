@@ -1,6 +1,6 @@
 runtime: custom
 env: flex
-instance_class: F2
+instance_class: F4
 
 env_variables:
   DJANGO_SETTINGS_MODULE: config.settings

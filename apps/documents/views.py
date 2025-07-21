@@ -6,11 +6,10 @@ from django.core.files.storage import default_storage
 import os
 import chromadb
 from django.conf import settings
+from rest_framework.parsers import MultiPartParser, FormParser
 from ml_pipeline.ocr.google_cloud_vision import GoogleCloudVisionOCRProcessor
 from ml_pipeline.ocr.pipeline import OCRPipeline
 from ml_pipeline.dataset.utils import clean_text
-from rest_framework.parsers import MultiPartParser, FormParser
-from ml_pipeline.entity_extractor.extractor import EntityExtractor
 from services.logger import logger
 
 class DocumentProcessingView(APIView):
@@ -49,6 +48,7 @@ class DocumentProcessingView(APIView):
                 key=lambda x: results["metadatas"][0].count(x)
             )
 
+            from ml_pipeline.entity_extractor.extractor import EntityExtractor
             entity_extractor = EntityExtractor()
             entities = entity_extractor.extract_entities(cleaned_text, predicted_type)
 
