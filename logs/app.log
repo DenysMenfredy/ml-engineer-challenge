@@ -1,0 +1,6 @@
+2025-07-21 05:23:54,124 [INFO] healthcare_app: Request: <rest_framework.request.Request: POST '/api/documents/process/'>
+2025-07-21 05:23:54,126 [INFO] healthcare_app: File: invoice_test.jpg
+2025-07-21 05:24:39,269 [INFO] healthcare_app: Request: <rest_framework.request.Request: POST '/api/documents/process/'>
+2025-07-21 05:24:39,273 [INFO] healthcare_app: File: invoice_test.jpg
+2025-07-21 05:25:38,677 [INFO] healthcare_app: Request: <rest_framework.request.Request: POST '/api/documents/process/'>
+2025-07-21 05:25:38,688 [INFO] healthcare_app: File: 86254149_4150.jpg

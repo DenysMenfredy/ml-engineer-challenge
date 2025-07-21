@@ -1,0 +1,110 @@
+.
+├── document_processing_system
+│   ├── apps
+│   │   ├── documents
+│   │   │   ├── admin.py
+│   │   │   ├── apps.py
+│   │   │   ├── __init__.py
+│   │   │   ├── migrations
+│   │   │   │   ├── 0001_initial.py
+│   │   │   │   ├── __init__.py
+│   │   │   │   └── __pycache__
+│   │   │   │       ├── 0001_initial.cpython-313.pyc
+│   │   │   │       └── __init__.cpython-313.pyc
+│   │   │   ├── models.py
+│   │   │   ├── __pycache__
+│   │   │   │   ├── admin.cpython-313.pyc
+│   │   │   │   ├── apps.cpython-313.pyc
+│   │   │   │   ├── __init__.cpython-313.pyc
+│   │   │   │   ├── models.cpython-313.pyc
+│   │   │   │   ├── serializers.cpython-313.pyc
+│   │   │   │   ├── urls.cpython-313.pyc
+│   │   │   │   └── views.cpython-313.pyc
+│   │   │   ├── serializers.py
+│   │   │   ├── tests.py
+│   │   │   ├── urls.py
+│   │   │   └── views.py
+│   │   └── processing
+│   │       ├── admin.py
+│   │       ├── apps.py
+│   │       ├── __init__.py
+│   │       ├── migrations
+│   │       │   ├── __init__.py
+│   │       │   └── __pycache__
+│   │       │       └── __init__.cpython-313.pyc
+│   │       ├── models.py
+│   │       ├── __pycache__
+│   │       │   ├── admin.cpython-313.pyc
+│   │       │   ├── apps.cpython-313.pyc
+│   │       │   ├── __init__.cpython-313.pyc
+│   │       │   └── models.cpython-313.pyc
+│   │       ├── tests.py
+│   │       └── views.py
+│   ├── config
+│   │   ├── asgi.py
+│   │   ├── __init__.py
+│   │   ├── __pycache__
+│   │   │   ├── __init__.cpython-313.pyc
+│   │   │   ├── settings.cpython-313.pyc
+│   │   │   ├── urls.cpython-313.pyc
+│   │   │   └── wsgi.cpython-313.pyc
+│   │   ├── settings.py
+│   │   ├── urls.py
+│   │   └── wsgi.py
+│   ├── db.sqlite3
+│   ├── deployment
+│   ├── files
+│   ├── __init__.py
+│   ├── logs
+│   ├── management
+│   │   ├── commands
+│   │   │   ├── __init__.py
+│   │   │   └── process_documents.py
+│   │   └── __init__.py
+│   ├── manage.py
+│   ├── ml_pipeline
+│   │   ├── classification
+│   │   ├── dataset
+│   │   │   ├── dataset.py
+│   │   │   ├── generator.py
+│   │   │   ├── preprocessing.py
+│   │   │   └── __pycache__
+│   │   │       └── generator.cpython-313.pyc
+│   │   ├── entity_extraction
+│   │   ├── __init__.py
+│   │   ├── ocr
+│   │   │   ├── base.py
+│   │   │   ├── google_cloud_vision.py
+│   │   │   ├── __init__.py
+│   │   │   ├── pipeline.py
+│   │   │   ├── postprocessor.py
+│   │   │   ├── preprocessor.py
+│   │   │   ├── __pycache__
+│   │   │   │   ├── base.cpython-313.pyc
+│   │   │   │   ├── google_cloud_vision.cpython-313.pyc
+│   │   │   │   ├── __init__.cpython-313.pyc
+│   │   │   │   ├── pipeline.cpython-313.pyc
+│   │   │   │   ├── preprocessor.cpython-313.pyc
+│   │   │   │   └── tesseract.cpython-313.pyc
+│   │   │   └── tesseract.py
+│   │   ├── preprocessing
+│   │   │   └── base.py
+│   │   ├── __pycache__
+│   │   │   └── __init__.cpython-313.pyc
+│   │   └── vector_db
+│   ├── __pycache__
+│   │   └── __init__.cpython-313.pyc
+│   ├── services
+│   └── tests
+├── __init__.py
+├── main.py
+├── process_documents.py
+├── pyproject.toml
+├── README.md
+├── run_django_command.py
+├── test_setup.py
+├── test_simple.py
+├── tree.txt
+└── uv.lock
+
+30 directories, 77 files
