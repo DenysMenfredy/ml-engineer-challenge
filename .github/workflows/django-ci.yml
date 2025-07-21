@@ -24,6 +24,10 @@ jobs:
         uses: google-github-actions/setup-gcloud@v1
       - name: Configure Docker for Artifact Registry
         run: gcloud auth configure-docker us-east1-docker.pkg.dev
+      - name: Write Google credentials to file
+        run: |
+          mkdir -p credentials
+          echo "${{ secrets.GOOGLE_APPLICATION_CREDENTIALS_JSON }}" > credentials/google_app_credentials.json
       - name: Build and Push Docker Image
         run: |
           docker build -t us-east1-docker.pkg.dev/${{ secrets.GCP_PROJECT_ID }}/document-processing-system/app:latest --file Dockerfile .
