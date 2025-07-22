@@ -7,7 +7,7 @@ ENV PYTHONDONTWRITEBYTECODE=1 \
     GOOGLE_APPLICATION_CREDENTIALS=/app/credentials/google_app_credentials.json \
     TRANSFORMERS_NO_CUDA=1 \
     CUDA_VISIBLE_DEVICES="" \
-    TRANSFORMERS_CACHE=/app/hf_cache
+    HF_HOME=/app/hf_cache
 
 # Set work directory
 WORKDIR /app

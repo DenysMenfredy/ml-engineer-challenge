@@ -18,7 +18,7 @@ class EntityExtractor:
                 tokenizer=model_name,
                 model=model_name,
                 aggregation_strategy="simple",
-                cache_dir=os.environ.get("TRANSFORMERS_CACHE", None)
+                cache_dir=os.environ.get("HF_HOME", None)
             )
             logger.info("[EntityExtractor] Model loaded successfully.")
         except Exception as e:
