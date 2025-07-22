@@ -30,4 +30,3 @@ liveness_check:
   timeout_sec: 60
   failure_threshold: 2
   success_threshold: 2
-  app_start_timeout_sec: 600  # Allow more time for model loading

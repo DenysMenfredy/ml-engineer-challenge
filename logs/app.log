@@ -56,3 +56,13 @@
 2025-07-22 23:48:14,635 [INFO] healthcare_app: [EntityExtractor] Model loading started. Model: dslim/bert-base-NER
 2025-07-22 23:48:14,635 [INFO] healthcare_app: [EntityExtractor] Using HF_HOME: /app/hf_cache
 2025-07-22 23:48:15,566 [INFO] healthcare_app: [EntityExtractor] Model loaded successfully.
+2025-07-22 23:49:37,243 [INFO] healthcare_app: Request: <rest_framework.request.Request: POST '/api/documents/process/'>
+2025-07-22 23:49:37,271 [INFO] healthcare_app: File: 91515307.jpg
+2025-07-22 23:50:03,857 [INFO] healthcare_app: Request: <rest_framework.request.Request: POST '/api/documents/process/'>
+2025-07-22 23:50:03,867 [INFO] healthcare_app: File: 91515307.jpg
+2025-07-22 23:50:15,081 [INFO] healthcare_app: Request: <rest_framework.request.Request: POST '/api/documents/process/'>
+2025-07-22 23:50:15,180 [INFO] healthcare_app: File: 91515307.jpg
+2025-07-22 23:50:17,609 [INFO] healthcare_app: Request: <rest_framework.request.Request: POST '/api/documents/process/'>
+2025-07-22 23:50:17,610 [INFO] healthcare_app: File: 91515307.jpg
+2025-07-22 23:50:21,054 [INFO] healthcare_app: Request: <rest_framework.request.Request: POST '/api/documents/process/'>
+2025-07-22 23:50:21,058 [INFO] healthcare_app: File: 91515307.jpg
