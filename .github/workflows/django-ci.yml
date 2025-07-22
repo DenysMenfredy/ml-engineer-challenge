@@ -30,10 +30,8 @@ jobs:
           printf '%s' "${{ secrets.GOOGLE_APPLICATION_CREDENTIALS }}" > credentials/google_app_credentials.json
       - name: Debug credentials file
         run: |
-          ls -l credentials/google_app_credentials.json
           head -5 credentials/google_app_credentials.json
           tail -5 credentials/google_app_credentials.json
-          cat credentials/google_app_credentials.json | wc -l
       - name: Build and Push Docker Image
         run: |
           docker build -t us-east1-docker.pkg.dev/${{ secrets.GCP_PROJECT_ID }}/document-processing-system/app:latest --file Dockerfile .
