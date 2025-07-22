@@ -24,6 +24,9 @@ RUN pip install --upgrade pip && \
     pip install . && \
     pip install gunicorn
 
+# Pre-download Hugging Face NER model to cache
+RUN python -c "from transformers import pipeline; pipeline('ner', model='dslim/bert-base-NER')"
+
 # Copy only the necessary project files (use .dockerignore to exclude unnecessary files)
 COPY . .
 
