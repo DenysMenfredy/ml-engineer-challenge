@@ -6,7 +6,8 @@ ENV PYTHONDONTWRITEBYTECODE=1 \
     PYTHONUNBUFFERED=1 \
     GOOGLE_APPLICATION_CREDENTIALS=/app/credentials/google_app_credentials.json \
     TRANSFORMERS_NO_CUDA=1 \
-    CUDA_VISIBLE_DEVICES=""
+    CUDA_VISIBLE_DEVICES="" \
+    TRANSFORMERS_CACHE=/app/hf_cache
 
 # Set work directory
 WORKDIR /app
@@ -34,4 +35,4 @@ COPY . .
 EXPOSE 8080
 
 # Use exec form for CMD, and use uvicorn/gunicorn for production if possible
-CMD ["gunicorn", "config.wsgi:application", "--bind", "0.0.0.0:8080"]
+CMD ["gunicorn", "config.wsgi:application", "--bind", "0.0.0.0:8080", "--timeout", "300"]

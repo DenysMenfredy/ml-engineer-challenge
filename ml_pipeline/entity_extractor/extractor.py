@@ -1,12 +1,29 @@
 from transformers import pipeline
 from typing import List, Dict, Any
+from services.logger import logger
+import os
 
 class EntityExtractor:
     """
     Entity extractor using Hugging Face's dslim/bert-base-NER model (English NER).
     """
     def __init__(self, model_name: str = "dslim/bert-base-NER"):
-        self.ner_pipeline = pipeline("ner", tokenizer=model_name, model=model_name, aggregation_strategy="simple")
+        logger.info(f"[EntityExtractor] Model loading started. Model: {model_name}")
+        try:
+            cache_dir = os.environ.get('TRANSFORMERS_CACHE', None)
+            if cache_dir:
+                logger.info(f"[EntityExtractor] Using TRANSFORMERS_CACHE: {cache_dir}")
+            self.ner_pipeline = pipeline(
+                "ner",
+                tokenizer=model_name,
+                model=model_name,
+                aggregation_strategy="simple",
+                cache_dir=os.environ.get("TRANSFORMERS_CACHE", None)
+            )
+            logger.info("[EntityExtractor] Model loaded successfully.")
+        except Exception as e:
+            logger.error(f"[EntityExtractor] Model loading failed: {e}")
+            raise
         # Entity mapping for each document class
         self.entity_mapping = {
             "advertisement": ["product_name", "price", "company", "contact_info", "date", "location"],

@@ -17,3 +17,16 @@
 2025-07-22 18:10:47,056 [INFO] healthcare_app: File: invoice_test.jpg
 2025-07-22 18:11:34,207 [INFO] healthcare_app: Request: <rest_framework.request.Request: POST '/api/documents/process/'>
 2025-07-22 18:11:34,208 [INFO] healthcare_app: File: invoice_test.jpg
+2025-07-22 21:10:24,559 [INFO] healthcare_app: Request: <rest_framework.request.Request: POST '/api/documents/process/'>
+2025-07-22 21:10:24,564 [INFO] healthcare_app: File: invoice_test.jpg
+2025-07-22 21:10:42,561 [INFO] healthcare_app: Request: <rest_framework.request.Request: POST '/api/documents/process/'>
+2025-07-22 21:10:42,562 [INFO] healthcare_app: File: invoice_test.jpg
+2025-07-22 21:10:52,724 [INFO] healthcare_app: Request: <rest_framework.request.Request: POST '/api/documents/process/'>
+2025-07-22 21:10:52,728 [INFO] healthcare_app: File: 91515307.jpg
+2025-07-22 21:11:03,903 [INFO] healthcare_app: Request: <rest_framework.request.Request: POST '/api/documents/process/'>
+2025-07-22 21:11:03,905 [INFO] healthcare_app: File: 91515307.jpg
+2025-07-22 21:11:16,955 [INFO] healthcare_app: Request: <rest_framework.request.Request: POST '/api/documents/process/'>
+2025-07-22 21:11:16,958 [INFO] healthcare_app: File: ocr_teste.jpg
+2025-07-22 21:11:20,173 [ERROR] healthcare_app: Error processing document: 'entity'
+2025-07-22 21:11:30,853 [INFO] healthcare_app: Request: <rest_framework.request.Request: POST '/api/documents/process/'>
+2025-07-22 21:11:30,854 [INFO] healthcare_app: File: invoice_test.jpg
