@@ -27,7 +27,7 @@ jobs:
       - name: Write Google credentials to file
         run: |
           mkdir -p credentials
-          printf '%s' "${{ secrets.GOOGLE_APPLICATION_CREDENTIALS }}" > credentials/google_app_credentials.json
+          echo "${{ secrets.GOOGLE_APPLICATION_CREDENTIALS_B64 }}" | base64 -d > credentials/google_app_credentials.json
       - name: Debug credentials file
         run: |
           head -5 credentials/google_app_credentials.json
