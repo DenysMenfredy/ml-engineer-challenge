@@ -21,7 +21,7 @@ automatic_scaling:
     target_utilization: 0.8
 
 resources:
-  disk_size_gb: 20
+  disk_size_gb: 30
 
 readiness_check:
   path: "/health"
@@ -29,7 +29,7 @@ readiness_check:
   timeout_sec: 10
   failure_threshold: 2
   success_threshold: 2
-  app_start_timeout_sec: 300  # Allow more time for model loading
+  app_start_timeout_sec: 600  # Allow more time for model loading
 
 liveness_check:
   path: "/health"
@@ -37,4 +37,4 @@ liveness_check:
   timeout_sec: 10
   failure_threshold: 2
   success_threshold: 2
-  initial_delay_sec: 300  # Wait for model to load
+  initial_delay_sec: 600  # Wait for model to load
