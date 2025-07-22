@@ -30,3 +30,23 @@
 2025-07-22 21:11:20,173 [ERROR] healthcare_app: Error processing document: 'entity'
 2025-07-22 21:11:30,853 [INFO] healthcare_app: Request: <rest_framework.request.Request: POST '/api/documents/process/'>
 2025-07-22 21:11:30,854 [INFO] healthcare_app: File: invoice_test.jpg
+2025-07-22 22:12:19,015 [INFO] healthcare_app: [EntityExtractor] Model loading started. Model: dslim/bert-base-NER
+2025-07-22 22:12:20,708 [ERROR] healthcare_app: [EntityExtractor] Model loading failed: TokenClassificationPipeline._sanitize_parameters() got an unexpected keyword argument 'cache_dir'
+2025-07-22 22:21:40,915 [INFO] healthcare_app: [EntityExtractor] Model loading started. Model: dslim/bert-base-NER
+2025-07-22 22:21:40,916 [INFO] healthcare_app: [EntityExtractor] Using HF_HOME: /app/hf_cache
+2025-07-22 22:22:00,857 [INFO] healthcare_app: [EntityExtractor] Model loaded successfully.
+2025-07-22 22:22:05,382 [INFO] healthcare_app: [EntityExtractor] Model loading started. Model: dslim/bert-base-NER
+2025-07-22 22:22:05,383 [INFO] healthcare_app: [EntityExtractor] Using HF_HOME: /app/hf_cache
+2025-07-22 22:22:06,491 [INFO] healthcare_app: [EntityExtractor] Model loaded successfully.
+2025-07-22 22:22:06,500 [INFO] healthcare_app: Request: <rest_framework.request.Request: POST '/api/documents/process/'>
+2025-07-22 22:22:06,501 [INFO] healthcare_app: File: invoice_test.jpg
+2025-07-22 22:22:39,208 [INFO] healthcare_app: Request: <rest_framework.request.Request: POST '/api/documents/process/'>
+2025-07-22 22:22:39,216 [INFO] healthcare_app: File: invoice_test.jpg
+2025-07-22 22:23:00,814 [INFO] healthcare_app: Request: <rest_framework.request.Request: POST '/api/documents/process/'>
+2025-07-22 22:23:00,827 [INFO] healthcare_app: File: invoice_test.jpg
+2025-07-22 22:23:09,852 [INFO] healthcare_app: Request: <rest_framework.request.Request: POST '/api/documents/process/'>
+2025-07-22 22:23:09,854 [INFO] healthcare_app: File: invoice_test.jpg
+2025-07-22 22:23:13,385 [INFO] healthcare_app: Request: <rest_framework.request.Request: POST '/api/documents/process/'>
+2025-07-22 22:23:13,387 [INFO] healthcare_app: File: invoice_test.jpg
+2025-07-22 22:24:16,357 [INFO] healthcare_app: Request: <rest_framework.request.Request: POST '/api/documents/process/'>
+2025-07-22 22:24:16,359 [INFO] healthcare_app: File: 91515307.jpg
