@@ -11,6 +11,10 @@ from ml_pipeline.ocr.google_cloud_vision import GoogleCloudVisionOCRProcessor
 from ml_pipeline.ocr.pipeline import OCRPipeline
 from ml_pipeline.dataset.utils import clean_text
 from services.logger import logger
+from ml_pipeline.entity_extractor.extractor import EntityExtractor
+
+# Preload the model ONCE at module load
+enity_extractor = EntityExtractor()
 
 class DocumentProcessingView(APIView):
     """API view to process a single document, identify its type, and extract entities."""
@@ -48,9 +52,9 @@ class DocumentProcessingView(APIView):
                 key=lambda x: results["metadatas"][0].count(x)
             )
 
-            from ml_pipeline.entity_extractor.extractor import EntityExtractor
-            entity_extractor = EntityExtractor()
-            entities = entity_extractor.extract_entities(cleaned_text, predicted_type)
+            # Remove per-request instantiation
+            # entity_extractor = EntityExtractor()
+            entities = enity_extractor.extract_entities(cleaned_text, predicted_type)
 
             # Response
             response = {

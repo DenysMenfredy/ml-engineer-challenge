@@ -7,7 +7,7 @@ services:
       dockerfile: Dockerfile
     container_name: health-care-doc-system
     ports:
-      - "8000:8000"
+      - "8080:8080"
     volumes:
       - ./logs:/app/logs
       - ./credentials/google_app_credentials.json:/app/credentials/google_app_credentials.json:ro
