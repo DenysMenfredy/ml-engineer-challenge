@@ -52,10 +52,12 @@ class DocumentProcessingView(APIView):
                 set(results["metadatas"][0][i]["class"] for i in range(len(results["metadatas"][0]))),
                 key=lambda x: results["metadatas"][0].count(x)
             )
+            logger.info(f"[DocumentProcessingView] Predicted type: {predicted_type}")
 
             # Remove per-request instantiation
             # entity_extractor = EntityExtractor()
             entities = enity_extractor.extract_entities(cleaned_text, predicted_type)
+            logger.info(f"[DocumentProcessingView] Entities: {entities}")
 
             # Store processed document, type, and entities in ChromaDB
             collection.upsert(

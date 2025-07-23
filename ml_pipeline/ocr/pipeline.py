@@ -7,7 +7,7 @@ from ml_pipeline.ocr.base import BaseOCRProcessor, OCRResult
 from ml_pipeline.ocr.tesseract import TesseractOCRProcessor
 from pdf2image import convert_from_path
 import os
-
+from services.logger import logger
 class OCRPipeline:
     """OCR Pipeline class."""
 
@@ -25,6 +25,7 @@ class OCRPipeline:
         if isinstance(image, str) and self._is_pdf(image):
             # PDF: convert each page to image and OCR each
             images = self._pdf_to_images(image)
+            logger.info(f"[OCRPipeline] PDF to images conversion completed. Number of pages: {len(images)}")
             all_text = []
             all_blocks = []
             confidences = []
@@ -35,10 +36,15 @@ class OCRPipeline:
                     all_blocks.extend(getattr(ocr_result, 'blocks', []))
                 confidences.append(getattr(ocr_result, 'confidence', 0.0))
             avg_conf = sum(confidences) / len(confidences) if confidences else 0.0
+            logger.info(f"[OCRPipeline] OCR result completed. Number of pages: {len(images)}, Average confidence: {avg_conf}")
             return OCRResult(
                 text="\n".join(all_text),
                 confidence=avg_conf,
-                metadata={'provider': getattr(self.processor, '__class__', type(self.processor)).__name__, 'type': 'pdf'},
+                page_count=len(images),
+                blocks=all_blocks,
+                metadata={
+                    "type": "pdf"
+                },
                 raw_response={'pages': len(images)},
             )
 
