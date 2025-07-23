@@ -10,7 +10,7 @@ if not os.path.exists(LOG_DIR):
 
 LOG_FORMAT = '%(asctime)s [%(levelname)s] %(name)s: %(message)s'
 
-logger = logging.getLogger('healthcare_app')
+logger = logging.getLogger('document_processing')
 logger.setLevel(logging.INFO)
 
 # Prevent adding multiple handlers in interactive environments

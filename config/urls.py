@@ -22,7 +22,6 @@ from apps.documents.health import HealthCheckView
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('api/', include('apps.documents.urls')),
     path('api-auth/', include('rest_framework.urls')),
     path('api/documents/', include('apps.documents.urls', namespace='documents')),
     path('health/', HealthCheckView.as_view(), name='health_check'),

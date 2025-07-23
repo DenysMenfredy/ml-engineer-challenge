@@ -1,16 +1,18 @@
 # Health Care Document Processing System
 
-A comprehensive document processing system that uses OCR (Optical Character Recognition) to extract text from healthcare documents and stores them in a vector database for efficient retrieval and analysis.
+A comprehensive document processing system that uses OCR (Optical Character Recognition) to extract text from business documents, classifies them, extracts relevant entities (using NER, Hugging Face LLMs, or Ollama), and stores them in a vector database (ChromaDB) for efficient retrieval and analysis.
 
 ## Features
 
-- **Multi-format OCR**: Support for various image formats (JPG, PNG, TIFF, etc.)
-- **Google Cloud Vision API**: High-accuracy text extraction
-- **Tesseract OCR**: Open-source OCR alternative
+- **Multi-format OCR**: Support for various image formats (JPG, PNG, TIFF, PDF, etc.)
+- **Google Cloud Vision API** and **Tesseract OCR**: High-accuracy text extraction
 - **Image Preprocessing**: Noise removal, skew correction, binarization
-- **Vector Database**: ChromaDB integration for semantic search
+- **Vector Database**: ChromaDB integration for semantic search and storage of documents, types, and extracted entities
 - **Django Integration**: Web framework for API and management
-- **Document Classification**: Automatic classification based on folder structure
+- **Document Classification**: Automatic classification using vector similarity and metadata
+- **Entity Extraction**: Supports standard NER, Hugging Face LLMs, and local LLMs via Ollama (prompt-based extraction)
+- **Configurable Pipeline**: Easily switch between entity extraction methods
+- **Robust Logging**: Uses a rotating file and console logger.
 
 ## Project Structure
 
@@ -18,29 +20,29 @@ A comprehensive document processing system that uses OCR (Optical Character Reco
 health-care-document-processing-system/
 ├── data/
 │   └── docs-sm/                    # Document dataset
-│       ├── advertisement/          # Document class 1
-│       ├── budget/                 # Document class 2
-│       ├── email/                  # Document class 3
+│       ├── invoice/                # Document class example
+│       ├── form/                   # Document class example
 │       └── ...                     # More document classes
-├── document_processing_system/     # Django project
-│   ├── apps/                       # Django apps
-│   ├── config/                     # Django settings
-│   ├── ml_pipeline/                # ML processing pipeline
-│   │   ├── ocr/                    # OCR modules
-│   │   ├── dataset/                # Dataset generation
-│   │   └── ...
-│   ├── management/                 # Django management commands
-│   └── manage.py                   # Django management script
+├── apps/                           # Django apps (documents, processing)
+├── config/                         # Django settings
+├── ml_pipeline/                    # ML processing pipeline
+│   ├── ocr/                        # OCR modules
+│   ├── dataset/                    # Dataset generation
+│   ├── entity_extractor/           # Entity extraction (NER, LLM, Ollama)
+│   └── ...
+├── services/                       # Logger, etc.
 ├── main.py                         # Main execution script
-├── test_setup.py                   # Setup verification script
-└── pyproject.toml                  # Project dependencies
+├── manage.py                       # Django management script
+├── requirements.txt                # Project dependencies (generated from pyproject.toml)
+└── README.md                       # This file
 ```
 
 ## Prerequisites
 
-1. **Python 3.13+**
+1. **Python 3.10+**
 2. **Tesseract OCR** (for local OCR processing)
 3. **Google Cloud Vision API** credentials (for cloud OCR)
+4. **Ollama** (optional, for local LLM entity extraction)
 
 ### Installing Tesseract OCR
 
@@ -68,6 +70,15 @@ Download from [GitHub releases](https://github.com/UB-Mannheim/tesseract/wiki)
    export GOOGLE_APPLICATION_CREDENTIALS="/path/to/your/service-account-key.json"
    ```
 
+### Ollama Setup (Optional)
+
+1. [Install Ollama](https://ollama.com/download) on your machine
+2. Pull and run your desired model (e.g., gemma3:1b):
+   ```bash
+   ollama pull gemma3:1b
+   ollama run gemma3:1b
+   ```
+
 ## Installation
 
 1. **Clone the repository:**
@@ -78,11 +89,9 @@ Download from [GitHub releases](https://github.com/UB-Mannheim/tesseract/wiki)
 
 2. **Install dependencies:**
    ```bash
-   # Using uv (recommended)
+   pip install -r requirements.txt
+   # Or using uv (if available)
    uv sync
-   
-   # Or using pip
-   pip install -e .
    ```
 
 3. **Verify setup:**
@@ -90,155 +99,117 @@ Download from [GitHub releases](https://github.com/UB-Mannheim/tesseract/wiki)
    python test_setup.py
    ```
 
+## Document Processing Pipeline
+
+1. **OCR Extraction:** Extracts text from documents using Tesseract or Google Vision.
+2. **Text Cleaning:** Cleans and normalizes text for ML processing.
+3. **Document Classification:** Identifies document type using vector similarity search in ChromaDB.
+4. **Entity Extraction:**
+   - **NER:** Standard named entity recognition (default)
+   - **Hugging Face LLM:** Prompt-based extraction using instruction-tuned models
+   - **Ollama:** Local LLM extraction via REST API (e.g., gemma3:1b, mistral, llama2)
+5. **Storage:** Stores cleaned text, document type, and extracted entities (as JSON) in ChromaDB for semantic search and retrieval.
+
 ## Usage
 
-### Quick Start
+### Batch Processing (Django Management Command)
 
-1. **Test the setup:**
-   ```bash
-   python test_setup.py
-   ```
-
-2. **Process documents:**
-   ```bash
-   python main.py
-   ```
-
-3. **Using Django management command:**
-   ```bash
-   # From project root (recommended)
-   python run_django_command.py process_documents data/docs-sm
-   
-   # Or from Django directory
-   cd document_processing_system
-   PYTHONPATH=.. python manage.py process_documents ../data/docs-sm
-   ```
-
-### Configuration
-
-The system can be configured through the `config` parameter in the `TextDatasetGenerator`:
-
-```python
-config = {
-    "ocr_processor_pipeline": OCRPipeline(
-        GoogleCloudVisionOCRProcessor({
-            "language_hints": ["en"]
-        })
-    )
-}
+Process a dataset of documents:
+```bash
+python manage.py process_documents --input_dir data/docs-sm
 ```
 
-### Document Structure
-
-Place your documents in the `data/docs-sm/` directory with the following structure:
-
-```
-data/docs-sm/
-├── class1/          # Documents of class 1
-│   ├── doc1.jpg
-│   ├── doc2.png
-│   └── ...
-├── class2/          # Documents of class 2
-│   ├── doc3.jpg
-│   └── ...
-└── ...
-```
-
-The folder names will be used as class labels for document classification.
-
-## API Usage
-
-### Django REST API
+### API Usage
 
 Start the Django development server:
 ```bash
-cd document_processing_system
 python manage.py runserver
 ```
 
-The API will be available at `http://localhost:8000/api/`
+Upload a document via the API:
+- Endpoint: `POST /api/documents/`
+- Form field: `file` (the document to upload)
 
-### Vector Database Queries
-
-The processed documents are stored in ChromaDB for semantic search:
-
-```python
-import chromadb
-from chromadb.utils import embedding_functions
-
-client = chromadb.Client()
-collection = client.get_collection("documents")
-
-# Search for similar documents
-results = collection.query(
-    query_texts=["medical report"],
-    n_results=5
-)
+#### Example API Response
+```json
+{
+  "filename": "invoice123.pdf",
+  "document_type": "invoice",
+  "text": "invoice from acmecorp dated 2023-01-01 for $1000 ...",
+  "entities": {
+    "invoice_number": "123",
+    "date": "2023-01-01",
+    "total_amount": "$1000",
+    "customer_name": "AcmeCorp"
+  },
+  "confidence": 0.98
+}
 ```
+
+### Entity Extraction Configuration
+
+You can configure the entity extraction method in your code:
+```python
+from ml_pipeline.entity_extractor.extractor import EntityExtractor
+
+# Use Ollama (local LLM)
+extractor = EntityExtractor(use_ollama=True, ollama_model="gemma3:1b")
+
+# Use Hugging Face LLM
+extractor = EntityExtractor(use_llm=True, llm_model_name="mistralai/Mixtral-8x7B-Instruct-v0.1")
+
+# Use standard NER/regex (default)
+extractor = EntityExtractor()
+```
+
+## Docker Compose Usage
+
+You can build and run the application using Docker Compose:
+
+1. **Build the Docker image:**
+   ```bash
+   docker compose build --no-cache
+   ```
+
+2. **Start the application:**
+   ```bash
+   docker compose up
+   ```
+
+- The app will be available at http://localhost:8080
+- Logs will be written to the ./logs directory on your host machine.
+- Make sure your Google Cloud credentials are available at ./credentials/google_app_credentials.json
 
 ## Development
 
 ### Running Tests
 
 ```bash
-python test_setup.py
+python -m unittest discover
 ```
 
-### Adding New OCR Processors
+### Adding New Document Types or Entities
+- Add new folder(s) to your dataset for new document types
+- Update `entity_mapping` in `ml_pipeline/entity_extractor/extractor.py` to include new fields
+- Add or adjust regexes or prompt instructions as needed
 
-1. Create a new processor class inheriting from `BaseOCRProcessor`
-2. Implement the required methods
-3. Update the pipeline configuration
+### Logging
+- Logs are written to `logs/app.log` and the console
+- Logger name: `document_processing`
+- Log level can be set in `services/logger.py`
 
-### Adding New Preprocessing Steps
-
-1. Add new methods to the `OCRPreprocessor` class
-2. Update the `preprocess_pipeline` method
-3. Configure the pipeline to use the new preprocessing
+## Requirements & Testing
+- All dependencies are listed in `requirements.txt` (generated from `pyproject.toml`)
+- Unit tests for entity extraction and dataset generation are included in `tests/` and `ml_pipeline/entity_extractor/`
 
 ## Troubleshooting
 
-### Common Issues
+- **Timeouts:** Increase Gunicorn or reverse proxy timeout if LLM extraction is slow
+- **Ollama errors:** Ensure Ollama is running and the model is pulled
+- **ChromaDB errors:** Ensure metadata values are JSON-serializable (e.g., entities as JSON string)
+- **OCR errors:** Check Tesseract/Google Vision installation and credentials
 
-1. **Tesseract not found:**
-   - Install Tesseract OCR
-   - Ensure it's in your system PATH
-
-2. **Google Cloud Vision API errors:**
-   - Check your service account credentials
-   - Verify the API is enabled
-   - Check your quota limits
-
-3. **Import errors:**
-   - Run `python test_setup.py` to verify the setup
-   - Check that all dependencies are installed
-
-4. **Memory issues with large datasets:**
-   - Process documents in smaller batches
-   - Use the Django management command for better memory management
-
-### Debug Mode
-
-Enable debug logging by setting the environment variable:
-```bash
-export DEBUG=1
-```
-
-## Contributing
-
-1. Fork the repository
-2. Create a feature branch
-3. Make your changes
-4. Add tests
-5. Submit a pull request
 
 ## License
-
 This project is licensed under the MIT License - see the LICENSE file for details.
 
-## Support
-
-For support and questions:
-- Create an issue on GitHub
-- Check the troubleshooting section
-- Review the test output for specific error messages

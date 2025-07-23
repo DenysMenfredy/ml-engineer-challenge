@@ -13,6 +13,7 @@ from ml_pipeline.ocr.base import OCRProcessingError
 from ml_pipeline.ocr.google_cloud_vision import GoogleCloudVisionOCRProcessor
 from ml_pipeline.ocr.pipeline import OCRPipeline
 from services.logger import logger
+from ml_pipeline.entity_extractor.extractor import EntityExtractor
 
 class BaseTextDataset(ABC):
     """Abstract base class for processing text datasets."""
@@ -57,6 +58,8 @@ class TextDatasetGenerator(BaseTextDataset):
             name="documents",
             embedding_function=embedding_functions.SentenceTransformerEmbeddingFunction(model_name="all-MiniLM-L6-v2")
         )
+        # Add entity extractor instance
+        entity_extractor = EntityExtractor()
 
     def clean_text(self, text: str) -> str:
         """Clean text for ML model input."""
@@ -114,7 +117,8 @@ class TextDatasetGenerator(BaseTextDataset):
                 try:
                     ocr_result = self.ocr_processor_pipeline.process_file(file_path)
                     cleaned_text = self.clean_text(ocr_result.text)
-
+                    # Extract entities for this document
+                    entities = entity_extractor.extract_entities(cleaned_text, class_name)
                     self.collection.upsert(
                         documents=[cleaned_text],
                         metadatas=[{
@@ -122,7 +126,8 @@ class TextDatasetGenerator(BaseTextDataset):
                             "filename": filename,
                             "confidence": ocr_result.confidence,
                             "page_count": ocr_result.page_count,
-                            "detected_languages": ",".join(ocr_result.metadata.get("detected_languages", []))
+                            "detected_languages": ",".join(ocr_result.metadata.get("detected_languages", [])),
+                            "entities": json.dumps(entities)  # Store extracted entities as JSON string
                         }],
                         ids=[filename]
                     )

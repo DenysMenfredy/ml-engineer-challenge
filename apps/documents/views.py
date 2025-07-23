@@ -12,9 +12,10 @@ from ml_pipeline.ocr.pipeline import OCRPipeline
 from ml_pipeline.dataset.utils import clean_text
 from services.logger import logger
 from ml_pipeline.entity_extractor.extractor import EntityExtractor
+import json
 
-# Preload the model ONCE at module load
-enity_extractor = EntityExtractor()
+# Preload the model ONCE at module load, using Ollama for entity extraction with gemma3:1b
+enity_extractor = EntityExtractor(use_ollama=True, ollama_model="gemma3:1b")
 
 class DocumentProcessingView(APIView):
     """API view to process a single document, identify its type, and extract entities."""
@@ -55,6 +56,18 @@ class DocumentProcessingView(APIView):
             # Remove per-request instantiation
             # entity_extractor = EntityExtractor()
             entities = enity_extractor.extract_entities(cleaned_text, predicted_type)
+
+            # Store processed document, type, and entities in ChromaDB
+            collection.upsert(
+                documents=[cleaned_text],
+                metadatas=[{
+                    "class": predicted_type,
+                    "filename": file.name,
+                    "confidence": ocr_result.confidence,
+                    "entities": json.dumps(entities)
+                }],
+                ids=[file.name]
+            )
 
             # Response
             response = {

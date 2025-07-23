@@ -66,3 +66,111 @@
 2025-07-22 23:50:17,610 [INFO] healthcare_app: File: 91515307.jpg
 2025-07-22 23:50:21,054 [INFO] healthcare_app: Request: <rest_framework.request.Request: POST '/api/documents/process/'>
 2025-07-22 23:50:21,058 [INFO] healthcare_app: File: 91515307.jpg
+2025-07-23 02:18:57,541 [INFO] healthcare_app: [EntityExtractor] Model loading started. Model: dslim/bert-base-NER
+2025-07-23 02:18:58,928 [INFO] healthcare_app: [EntityExtractor] Model loaded successfully.
+2025-07-23 02:19:01,171 [INFO] healthcare_app: [EntityExtractor] Model loading started. Model: dslim/bert-base-NER
+2025-07-23 02:19:02,476 [INFO] healthcare_app: [EntityExtractor] Model loaded successfully.
+2025-07-23 02:19:03,615 [INFO] healthcare_app: [EntityExtractor] Model loading started. Model: dslim/bert-base-NER
+2025-07-23 02:19:04,629 [INFO] healthcare_app: [EntityExtractor] Model loaded successfully.
+2025-07-23 02:21:36,740 [INFO] healthcare_app: [EntityExtractor] Model loading started. Model: dslim/bert-base-NER
+2025-07-23 02:21:38,175 [INFO] healthcare_app: [EntityExtractor] Model loaded successfully.
+2025-07-23 02:21:38,561 [INFO] healthcare_app: [EntityExtractor] Model loading started. Model: dslim/bert-base-NER
+2025-07-23 02:21:39,637 [INFO] healthcare_app: [EntityExtractor] Model loaded successfully.
+2025-07-23 02:22:12,250 [INFO] healthcare_app: Request: <rest_framework.request.Request: POST '/api/documents/process/'>
+2025-07-23 02:22:12,251 [INFO] healthcare_app: File: 91515307.jpg
+2025-07-23 02:22:14,449 [ERROR] healthcare_app: Error processing document: Error extracting text from image: 403 Your application is authenticating by using local Application Default Credentials. The vision.googleapis.com API requires a quota project, which is not set by default. To learn how to set your quota project, see https://cloud.google.com/docs/authentication/adc-troubleshooting/user-creds . [reason: "SERVICE_DISABLED"
+domain: "googleapis.com"
+metadata {
+  key: "service"
+  value: "vision.googleapis.com"
+}
+metadata {
+  key: "consumer"
+  value: "projects/764086051850"
+}
+, locale: "en-US"
+message: "Your application is authenticating by using local Application Default Credentials. The vision.googleapis.com API requires a quota project, which is not set by default. To learn how to set your quota project, see https://cloud.google.com/docs/authentication/adc-troubleshooting/user-creds ."
+]
+2025-07-23 02:30:00,488 [INFO] healthcare_app: [EntityExtractor] Model loading started. Model: dslim/bert-base-NER
+2025-07-23 02:30:01,636 [INFO] healthcare_app: [EntityExtractor] Model loaded successfully.
+2025-07-23 02:30:18,299 [INFO] healthcare_app: [EntityExtractor] Model loading started. Model: dslim/bert-base-NER
+2025-07-23 02:30:19,345 [INFO] healthcare_app: [EntityExtractor] Model loaded successfully.
+2025-07-23 02:30:21,432 [INFO] healthcare_app: [EntityExtractor] Model loading started. Model: dslim/bert-base-NER
+2025-07-23 02:30:22,519 [INFO] healthcare_app: [EntityExtractor] Model loaded successfully.
+2025-07-23 02:30:22,943 [INFO] healthcare_app: [EntityExtractor] Model loading started. Model: dslim/bert-base-NER
+2025-07-23 02:30:24,025 [INFO] healthcare_app: [EntityExtractor] Model loaded successfully.
+2025-07-23 02:30:28,668 [INFO] healthcare_app: Request: <rest_framework.request.Request: POST '/api/documents/process/'>
+2025-07-23 02:30:28,670 [INFO] healthcare_app: File: 91515307.jpg
+2025-07-23 02:30:35,053 [ERROR] healthcare_app: Error processing document: Expected metadata value to be a str, int, float, bool, or None, got {} which is a dict in upsert.
+2025-07-23 02:31:43,108 [INFO] healthcare_app: [EntityExtractor] Model loading started. Model: dslim/bert-base-NER
+2025-07-23 02:31:44,084 [INFO] healthcare_app: [EntityExtractor] Model loaded successfully.
+2025-07-23 02:31:44,473 [INFO] healthcare_app: [EntityExtractor] Model loading started. Model: dslim/bert-base-NER
+2025-07-23 02:31:45,226 [INFO] healthcare_app: [EntityExtractor] Model loaded successfully.
+2025-07-23 02:31:48,775 [INFO] healthcare_app: Request: <rest_framework.request.Request: POST '/api/documents/process/'>
+2025-07-23 02:31:48,776 [INFO] healthcare_app: File: 91515307.jpg
+2025-07-23 02:33:14,772 [INFO] healthcare_app: Request: <rest_framework.request.Request: POST '/api/documents/process/'>
+2025-07-23 02:33:14,772 [INFO] healthcare_app: File: 91515307.jpg
+2025-07-23 02:37:29,719 [INFO] healthcare_app: [EntityExtractor] Model loading started. Model: dslim/bert-base-NER
+2025-07-23 02:37:30,866 [INFO] healthcare_app: [EntityExtractor] Model loaded successfully.
+2025-07-23 02:37:32,982 [INFO] healthcare_app: [EntityExtractor] Model loading started. Model: dslim/bert-base-NER
+2025-07-23 02:37:34,281 [INFO] healthcare_app: [EntityExtractor] Model loaded successfully.
+2025-07-23 02:37:34,742 [INFO] healthcare_app: [EntityExtractor] Model loading started. Model: dslim/bert-base-NER
+2025-07-23 02:37:35,675 [INFO] healthcare_app: [EntityExtractor] Model loaded successfully.
+2025-07-23 02:37:36,580 [INFO] healthcare_app: Request: <rest_framework.request.Request: POST '/api/documents/process/'>
+2025-07-23 02:37:36,580 [INFO] healthcare_app: File: 91515307.jpg
+2025-07-23 02:37:43,569 [INFO] healthcare_app: Request: <rest_framework.request.Request: POST '/api/documents/process/'>
+2025-07-23 02:37:43,570 [INFO] healthcare_app: File: 91515307.jpg
+2025-07-23 02:37:55,377 [INFO] healthcare_app: Request: <rest_framework.request.Request: POST '/api/documents/process/'>
+2025-07-23 02:37:55,378 [INFO] healthcare_app: File: invoice_test.jpg
+2025-07-23 02:38:53,631 [INFO] healthcare_app: Request: <rest_framework.request.Request: POST '/api/documents/process/'>
+2025-07-23 02:38:53,633 [INFO] healthcare_app: File: CTRCONTRACTS010472-0.jpg
+2025-07-23 02:39:07,777 [INFO] healthcare_app: Request: <rest_framework.request.Request: POST '/api/documents/process/'>
+2025-07-23 02:39:07,778 [INFO] healthcare_app: File: MASTER-SPP002015-202.jpg
+2025-07-23 02:39:40,735 [INFO] healthcare_app: Request: <rest_framework.request.Request: POST '/api/documents/process/'>
+2025-07-23 02:39:40,736 [INFO] healthcare_app: File: 85869781_85869885.jpg
+2025-07-23 02:39:55,053 [INFO] healthcare_app: Request: <rest_framework.request.Request: POST '/api/documents/process/'>
+2025-07-23 02:39:55,053 [INFO] healthcare_app: File: 531536178+-6178.jpg
+2025-07-23 03:00:33,367 [INFO] healthcare_app: [EntityExtractor] Model loading started. Model: dslim/bert-base-NER, use_llm=False, use_ollama=False
+2025-07-23 03:00:34,823 [INFO] healthcare_app: [EntityExtractor] NER pipeline loaded successfully.
+2025-07-23 03:00:37,000 [INFO] healthcare_app: [EntityExtractor] Model loading started. Model: dslim/bert-base-NER, use_llm=False, use_ollama=False
+2025-07-23 03:00:38,154 [INFO] healthcare_app: [EntityExtractor] NER pipeline loaded successfully.
+2025-07-23 03:00:38,636 [INFO] healthcare_app: [EntityExtractor] Model loading started. Model: dslim/bert-base-NER, use_llm=False, use_ollama=True
+2025-07-23 03:01:27,784 [INFO] healthcare_app: Request: <rest_framework.request.Request: POST '/api/documents/process/'>
+2025-07-23 03:01:27,786 [INFO] healthcare_app: File: 531536178+-6178.jpg
+2025-07-23 03:02:36,385 [INFO] healthcare_app: Request: <rest_framework.request.Request: POST '/api/documents/process/'>
+2025-07-23 03:02:36,386 [INFO] healthcare_app: File: 531536178+-6178.jpg
+2025-07-23 03:02:57,699 [INFO] healthcare_app: Request: <rest_framework.request.Request: POST '/api/documents/process/'>
+2025-07-23 03:02:57,700 [INFO] healthcare_app: File: CTRCONTRACTS010472-0.jpg
+2025-07-23 03:04:20,688 [INFO] healthcare_app: Request: <rest_framework.request.Request: POST '/api/documents/process/'>
+2025-07-23 03:04:20,689 [INFO] healthcare_app: File: MASTER-SPP002015-202.jpg
+2025-07-23 03:05:16,974 [INFO] healthcare_app: Request: <rest_framework.request.Request: POST '/api/documents/process/'>
+2025-07-23 03:05:16,975 [INFO] healthcare_app: File: 518213919+-3920.jpg
+2025-07-23 03:05:43,852 [INFO] healthcare_app: Request: <rest_framework.request.Request: POST '/api/documents/process/'>
+2025-07-23 03:05:43,853 [INFO] healthcare_app: File: ocr_teste.jpg
+2025-07-23 03:07:18,714 [INFO] healthcare_app: Request: <rest_framework.request.Request: POST '/api/documents/process/'>
+2025-07-23 03:07:18,714 [INFO] healthcare_app: File: 84460012_84460017.jpg
+2025-07-23 03:08:33,417 [INFO] healthcare_app: Request: <rest_framework.request.Request: POST '/api/documents/process/'>
+2025-07-23 03:08:33,418 [INFO] healthcare_app: File: Resume Denys Menfredy - Spain.pdf
+2025-07-23 03:09:10,833 [INFO] healthcare_app: Request: <rest_framework.request.Request: POST '/api/documents/process/'>
+2025-07-23 03:09:10,834 [INFO] healthcare_app: File: Resume Denys Menfredy - Spain.pdf
+2025-07-23 03:13:20,992 [INFO] document_processing: [EntityExtractor] Model loading started. Model: dslim/bert-base-NER, use_llm=False, use_ollama=False
+2025-07-23 03:13:22,305 [INFO] document_processing: [EntityExtractor] NER pipeline loaded successfully.
+2025-07-23 03:13:22,713 [INFO] document_processing: [EntityExtractor] Model loading started. Model: dslim/bert-base-NER, use_llm=False, use_ollama=True
+2025-07-23 03:22:00,553 [INFO] document_processing: [EntityExtractor] Model loading started. Model: dslim/bert-base-NER, use_llm=False, use_ollama=False
+2025-07-23 03:22:00,555 [INFO] document_processing: [EntityExtractor] Using HF_HOME: /app/hf_cache
+2025-07-23 03:30:16,141 [INFO] document_processing: [EntityExtractor] Model loading started. Model: dslim/bert-base-NER, use_llm=False, use_ollama=True
+2025-07-23 03:30:16,145 [INFO] document_processing: [EntityExtractor] Using HF_HOME: /app/hf_cache
+2025-07-23 03:30:28,799 [INFO] document_processing: [EntityExtractor] Model loading started. Model: dslim/bert-base-NER, use_llm=False, use_ollama=True
+2025-07-23 03:30:28,799 [INFO] document_processing: [EntityExtractor] Using HF_HOME: /app/hf_cache
+2025-07-23 03:30:28,800 [INFO] document_processing: Request: <rest_framework.request.Request: POST '/api/documents/process/'>
+2025-07-23 03:30:28,802 [INFO] document_processing: File: 531536178+-6178.jpg
+2025-07-23 03:30:50,895 [ERROR] document_processing: [EntityExtractor] Ollama extraction failed: HTTPConnectionPool(host='localhost', port=11434): Max retries exceeded with url: /api/generate (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x7fa97020df60>: Failed to establish a new connection: [Errno 111] Connection refused'))
+2025-07-23 03:31:14,511 [INFO] document_processing: Request: <rest_framework.request.Request: POST '/api/documents/process/'>
+2025-07-23 03:31:14,517 [INFO] document_processing: File: MASTER-SPP002015-202.jpg
+2025-07-23 03:31:17,579 [ERROR] document_processing: [EntityExtractor] Ollama extraction failed: HTTPConnectionPool(host='localhost', port=11434): Max retries exceeded with url: /api/generate (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x7fa97020e890>: Failed to establish a new connection: [Errno 111] Connection refused'))
+2025-07-23 03:31:32,899 [INFO] document_processing: Request: <rest_framework.request.Request: POST '/api/documents/process/'>
+2025-07-23 03:31:32,949 [INFO] document_processing: File: MASTER-SPP002015-202.jpg
+2025-07-23 03:31:37,171 [ERROR] document_processing: [EntityExtractor] Ollama extraction failed: HTTPConnectionPool(host='localhost', port=11434): Max retries exceeded with url: /api/generate (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x7fa97020e6b0>: Failed to establish a new connection: [Errno 111] Connection refused'))
+2025-07-23 03:31:55,305 [INFO] document_processing: Request: <rest_framework.request.Request: POST '/api/documents/process/'>
+2025-07-23 03:31:55,307 [INFO] document_processing: File: 531536178+-6178.jpg
+2025-07-23 03:32:04,642 [ERROR] document_processing: [EntityExtractor] Ollama extraction failed: HTTPConnectionPool(host='localhost', port=11434): Max retries exceeded with url: /api/generate (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x7fa97020e290>: Failed to establish a new connection: [Errno 111] Connection refused'))
